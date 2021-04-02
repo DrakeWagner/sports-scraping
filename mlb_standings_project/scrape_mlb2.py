@@ -1,4 +1,4 @@
-# Gets player rankings
+# gets player rankings
 
 import requests
 import csv
@@ -86,16 +86,18 @@ header = soup.find('tr', attrs={'class':'colhead'})
 for i in header.find_all('td'):
     cols.append(i.get_text())
 
+
+# filename formatting
+today = datetime.datetime.now()
+today = today.strftime('%m-%d-%y')
+datetime.datetime.now().date().isoformat()
+
 # write to csv
-with open('player_stats', 'w') as f:
+with open('player_stats_{}'.format(today), 'w') as f:
     write = csv.writer(f)
     write.writerow(cols)
     write.writerows(rows)
-
-
-
-
-
+    
 
 '''
 
